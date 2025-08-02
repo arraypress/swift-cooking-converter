@@ -4,21 +4,23 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-cooking-converter",
+    name: "CookingConverter",  // Package name
+    platforms: [
+        .iOS(.v13),
+        .macOS(.v10_15),
+        .tvOS(.v13),
+        .watchOS(.v6)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "swift-cooking-converter",
-            targets: ["swift-cooking-converter"]),
+            name: "CookingConverter",  // What you import
+            targets: ["CookingConverter"]),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "swift-cooking-converter"),
+            name: "CookingConverter"),  // Target/module name
         .testTarget(
-            name: "swift-cooking-converterTests",
-            dependencies: ["swift-cooking-converter"]
-        ),
+            name: "CookingConverterTests",
+            dependencies: ["CookingConverter"]),
     ]
 )
