@@ -5,7 +5,6 @@
 //  Created by David Sherlock on 02/08/2025.
 //
 
-
 import Foundation
 
 /// Categories of cooking measurements.
@@ -13,6 +12,7 @@ import Foundation
 /// Cooking involves different types of measurements that behave differently
 /// in conversions and have different precision requirements.
 public enum MeasurementType: String, CaseIterable, Sendable {
+    
     /// Volume measurements (cups, milliliters, tablespoons)
     case volume = "volume"
     
@@ -38,4 +38,5 @@ public enum MeasurementType: String, CaseIterable, Sendable {
             return "Quantity (pieces, servings)"
         }
     }
+    
 }

@@ -5,13 +5,11 @@
 //  Created by David Sherlock on 02/08/2025.
 //
 
-
 import Foundation
-
-// MARK: - Conversion Info
 
 /// Comprehensive information about converter capabilities.
 public struct CookingConversionInfo: Sendable {
+    
     /// All supported ingredients
     public let supportedIngredients: [IngredientType]
     
@@ -43,4 +41,5 @@ public struct CookingConversionInfo: Sendable {
     public var ingredientsByCategory: [IngredientCategory: [IngredientType]] {
         return Dictionary(grouping: supportedIngredients) { $0.category }
     }
+    
 }

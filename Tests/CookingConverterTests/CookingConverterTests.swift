@@ -3,7 +3,7 @@
 //  CookingConverter
 //
 //  Comprehensive test suite for cooking measurement conversions
-//  Created on 02/08/2025.
+//  Created by David Sherlock on 02/08/2025.
 //
 
 import XCTest

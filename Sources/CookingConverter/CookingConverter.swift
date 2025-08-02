@@ -1,22 +1,12 @@
 //
 //  CookingConverter.swift
-//  swift-cooking-converter
-//
-//  Created by David Sherlock on 02/08/2025.
-//
-
-
-//
-//  CookingConverter.swift
 //  CookingConverter
 //
 //  A comprehensive cooking measurement converter with ingredient-specific conversions
-//  Created on 02/08/2025.
+//  Created by David Sherlock on 02/08/2025.
 //
 
 import Foundation
-
-// MARK: - Main Public API
 
 /// A comprehensive cooking measurement converter that handles ingredient-specific conversions.
 ///

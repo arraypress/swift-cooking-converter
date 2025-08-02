@@ -1,14 +1,12 @@
 //
-//  Enums.swift
+//  CookingSystem.swift
 //  CookingConverter
 //
 //  Core enums for cooking measurement systems and units
-//  Created on 02/08/2025.
+//  Created by David Sherlock on 02/08/2025.
 //
 
 import Foundation
-
-// MARK: - Cooking Systems
 
 /// International cooking measurement systems.
 ///
@@ -28,6 +26,7 @@ import Foundation
 /// - **United Kingdom**: Mixed Imperial and Metric
 /// - **Australia/Canada**: Primarily metric with some Imperial legacy
 public enum CookingSystem: String, CaseIterable, Sendable {
+    
     /// United States measurement system (cups, tablespoons, ounces, Fahrenheit)
     case us = "US"
     
@@ -60,4 +59,5 @@ public enum CookingSystem: String, CaseIterable, Sendable {
             return [.fluidOunces, .ounces, .pounds, .fahrenheit]
         }
     }
+    
 }

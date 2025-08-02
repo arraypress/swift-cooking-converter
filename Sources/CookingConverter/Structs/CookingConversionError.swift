@@ -5,13 +5,11 @@
 //  Created by David Sherlock on 02/08/2025.
 //
 
-
 import Foundation
-
-// MARK: - Conversion Error
 
 /// Errors that can occur during cooking conversions.
 public enum CookingConversionError: Error, LocalizedError, Equatable, Sendable {
+    
     /// Invalid amount provided (negative or zero)
     case invalidAmount(Double)
     
@@ -57,4 +55,5 @@ public enum CookingConversionError: Error, LocalizedError, Equatable, Sendable {
             return "Amount seems unusually large or small"
         }
     }
+    
 }

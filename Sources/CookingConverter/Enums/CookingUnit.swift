@@ -178,4 +178,5 @@ public enum CookingUnit: String, CaseIterable, Sendable {
             return 0  // 2 pieces, 4 servings
         }
     }
+    
 }

@@ -3,12 +3,10 @@
 //  CookingConverter
 //
 //  Internal conversion logic and helper methods
-//  Created on 02/08/2025.
+//  Created by David Sherlock on 02/08/2025.
 //
 
 import Foundation
-
-// MARK: - Internal Conversion Logic
 
 extension CookingConverter {
     

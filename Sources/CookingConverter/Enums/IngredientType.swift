@@ -5,7 +5,6 @@
 //  Created by David Sherlock on 02/08/2025.
 //
 
-
 import Foundation
 
 /// Comprehensive database of cooking ingredients with density information.
@@ -354,4 +353,5 @@ public enum IngredientType: String, CaseIterable, Sendable {
             return nil
         }
     }
+    
 }

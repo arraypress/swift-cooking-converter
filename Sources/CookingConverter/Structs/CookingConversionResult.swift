@@ -5,10 +5,7 @@
 //  Created by David Sherlock on 02/08/2025.
 //
 
-
 import Foundation
-
-// MARK: - Conversion Result
 
 /// Detailed result of a cooking measurement conversion.
 ///
@@ -16,6 +13,7 @@ import Foundation
 /// notes, and potential errors. This provides transparency about the
 /// reliability and context of conversions.
 public struct CookingConversionResult: Sendable {
+    
     /// Original amount that was converted
     public let originalAmount: Double
     
@@ -85,4 +83,5 @@ public struct CookingConversionResult: Sendable {
         self.error = error
         self.notes = notes
     }
+    
 }

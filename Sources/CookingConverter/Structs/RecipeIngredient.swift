@@ -5,10 +5,7 @@
 //  Created by David Sherlock on 02/08/2025.
 //
 
-
 import Foundation
-
-// MARK: - Recipe Ingredient
 
 /// Represents a single ingredient in a recipe with amount and unit.
 ///
@@ -25,6 +22,7 @@ import Foundation
 /// )
 /// ```
 public struct RecipeIngredient: Sendable, Equatable {
+    
     /// Name of the ingredient
     public let name: String
     
@@ -49,4 +47,5 @@ public struct RecipeIngredient: Sendable, Equatable {
         self.unit = unit
         self.notes = notes
     }
+    
 }
