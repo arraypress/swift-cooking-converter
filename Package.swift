@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "CookingConverter",  // Package name
+    name: "CookingConverter",
     platforms: [
         .iOS(.v13),
         .macOS(.v10_15),
@@ -13,12 +13,12 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "CookingConverter",  // What you import
+            name: "CookingConverter",
             targets: ["CookingConverter"]),
     ],
     targets: [
         .target(
-            name: "CookingConverter"),  // Target/module name
+            name: "CookingConverter"),
         .testTarget(
             name: "CookingConverterTests",
             dependencies: ["CookingConverter"]),
