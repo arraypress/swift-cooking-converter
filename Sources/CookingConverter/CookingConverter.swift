@@ -161,6 +161,32 @@ public struct CookingConverter {
         to toUnit: CookingUnit
     ) -> CookingConversionResult {
         
+        // Temperature is answered first, for two reasons. It is an offset
+        // scale rather than a factor, so it cannot go through
+        // getConversionFactor at all; and it is the one measurement here that
+        // is meaningful at and below zero, so it must be settled before the
+        // positive-amount guard that every other unit needs.
+        if fromUnit.measurementType == .temperature || toUnit.measurementType == .temperature {
+            guard let converted = convertTemperature(amount, from: fromUnit, to: toUnit) else {
+                return CookingConversionResult(
+                    originalAmount: amount,
+                    ingredient: ingredient,
+                    fromUnit: fromUnit,
+                    toUnit: toUnit,
+                    error: .unsupportedConversion(from: fromUnit, to: toUnit, for: ingredient)
+                )
+            }
+            return CookingConversionResult(
+                originalAmount: amount,
+                convertedAmount: converted,
+                ingredient: ingredient,
+                fromUnit: fromUnit,
+                toUnit: toUnit,
+                confidence: 1.0,
+                notes: fromUnit == toUnit ? "Same unit - no conversion needed" : nil
+            )
+        }
+
         guard amount > 0 else {
             return CookingConversionResult(
                 originalAmount: amount,

@@ -585,4 +585,56 @@ final class CookingConverterTests: XCTestCase {
         )
     }
     
+
+    // MARK: - Temperature through the general entry point
+
+    /// `convert` used to answer nil for °F to °C, a conversion the library
+    /// could do perfectly well through `convertTemperature`. A caller reaching
+    /// for the general function got a silent nil rather than an answer.
+    func testGeneralConvertHandlesTemperature() {
+        let celsius = CookingConverter.convert(
+            amount: 350, ingredient: .water, from: .fahrenheit, to: .celsius
+        )
+        XCTAssertNotNil(celsius, "convert should answer temperature, not nil")
+        XCTAssertEqual(celsius!, 176.67, accuracy: 0.01)
+
+        let fahrenheit = CookingConverter.convert(
+            amount: 180, ingredient: .water, from: .celsius, to: .fahrenheit
+        )
+        XCTAssertEqual(fahrenheit!, 356, accuracy: 0.01)
+    }
+
+    /// Every other unit here is a quantity, so `convertWithDetails` refuses
+    /// anything at or below zero. Temperature is not a quantity: 0 °C and
+    /// -18 °C are both ordinary readings, and the guard must not eat them.
+    func testFreezingTemperaturesSurviveThePositiveAmountGuard() {
+        let freezing = CookingConverter.convert(
+            amount: 0, ingredient: .water, from: .celsius, to: .fahrenheit
+        )
+        XCTAssertEqual(freezing, 32, "0 °C is 32 °F, not a rejected amount")
+
+        let freezer = CookingConverter.convert(
+            amount: -18, ingredient: .water, from: .celsius, to: .fahrenheit
+        )
+        XCTAssertNotNil(freezer, "a freezer setting is a real temperature")
+        XCTAssertEqual(freezer!, -0.4, accuracy: 0.01)
+    }
+
+    /// A quantity is still refused at zero — the exemption above is for
+    /// temperature only, not a hole in the guard.
+    func testZeroIsStillRefusedForQuantities() {
+        XCTAssertNil(
+            CookingConverter.convert(amount: 0, ingredient: .allPurposeFlour, from: .cups, to: .grams),
+            "zero cups of flour is not a conversion worth answering"
+        )
+    }
+
+    /// Mixing a temperature with a mass is meaningless and must stay refused
+    /// rather than falling through to a factor.
+    func testTemperatureToWeightIsRefused() {
+        XCTAssertNil(
+            CookingConverter.convert(amount: 350, ingredient: .water, from: .fahrenheit, to: .grams),
+            "°F to grams is not a conversion"
+        )
+    }
 }

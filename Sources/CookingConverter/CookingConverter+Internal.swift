@@ -52,7 +52,9 @@ extension CookingConverter {
             return convertWeightToVolume(ingredient: ingredient, from: fromUnit, to: toUnit)
             
         case (.temperature, .temperature):
-            // Temperature conversions handled separately
+            // Unreachable in practice: convertWithDetails answers temperature
+            // before it gets here. Kept because a factor cannot express an
+            // offset scale — 0 °C is 32 °F, not 0 °F.
             return nil
             
         default:
